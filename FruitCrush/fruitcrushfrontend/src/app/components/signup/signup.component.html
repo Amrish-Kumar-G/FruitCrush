@@ -1,0 +1,27 @@
+<h1>Register</h1>
+<h2>Sign Up</h2>
+<div id="loginBox">
+  <div>
+  <div style="display: flex;flex-wrap: wrap;" class="box">
+  <div class="group1">
+<input type="email" required  id="email" placeholder="Enter email" [(ngModel)]="user.emailId">
+<br>
+<input type="text" required  id="username" placeholder="Enter Username"[(ngModel)]="user.userName">
+<br>
+<input type="tel" required id="mobilenumber" placeholder="Enter Mobilenumber" pattern="[6789][0-9]{9}" maxlength="10" [(ngModel)]="user.mobileNo">
+<br>
+<input type="password" required  id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Password" [(ngModel)]="user.password">
+<br>
+<input type="password" required  id="confirmpassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Confirm Password" [(ngModel)]="user.re_password">
+<button id="submitButton" (click)="addUser()">Submit</button>
+</div>
+<div class="group1">
+  <img src="assets/images/loginimage.jpeg" alt="Laptop" width="80%"/>
+</div>
+</div>
+<br>
+<div class="signupstyle">
+<p>Already a user? <a href="/login">Login</a></p>
+</div>
+</div>
+</div>
