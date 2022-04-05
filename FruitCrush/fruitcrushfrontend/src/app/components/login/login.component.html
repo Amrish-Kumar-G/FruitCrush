@@ -1,1 +1,21 @@
-<p>login works!</p>
+<h1>Login</h1>
+<div id="loginBox">
+  <div>
+  <div style="display: flex;flex-wrap: wrap;" class="box">
+  <div class="group1">
+<input type="email" id="email" placeholder="Enter email" [(ngModel)]="user.emailId">
+<br>
+<input type="password" id="password" placeholder="Enter Password"[(ngModel)]="user.password">
+<br>
+<button id="submitButton" (click)="authUser()">Login</button>
+</div>
+<div class="group1">
+  <img src="assets/images/loginimage.jpeg" alt="Laptop" width="70%"/>
+</div>
+</div>
+<br>
+<div class="signupstyle">
+<p>New User? <a href="">Sign Up</a></p>
+</div>
+</div>
+</div>

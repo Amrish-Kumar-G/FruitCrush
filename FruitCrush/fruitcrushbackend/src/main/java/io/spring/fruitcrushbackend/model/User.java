@@ -20,18 +20,7 @@ public class User {
 	private String role;
     private Boolean active;
 
-	public User(int id, String emailId, String userName, String mobileNo, String password, String re_password,
-			String role,Boolean active) {
-		super();
-		this.id = id;
-		this.emailId = emailId;
-		this.userName = userName;
-		this.mobileNo = mobileNo;
-		this.password = password;
-		this.re_password = re_password;
-		this.role = role;
-        this.active=active;
-	}
+
     public int getId() {
 		return id;
 	}
