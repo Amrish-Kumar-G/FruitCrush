@@ -41,6 +41,14 @@ img{
 a{
     text-decoration: none;
 }
+.adminsignupstyle{
+    margin-left:18%;
+    margin-top: 0%;
+}
+p{
+    font-size:medium;
+    font-style: italic;
+}
 .signupstyle{
     margin-left:22%;
     margin-top: -5%;
