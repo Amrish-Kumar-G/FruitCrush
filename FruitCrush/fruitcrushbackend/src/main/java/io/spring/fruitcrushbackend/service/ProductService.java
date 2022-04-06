@@ -1,7 +1,6 @@
 package io.spring.fruitcrushbackend.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,17 +21,14 @@ public class ProductService {
 	public void deleteProduct(int id) {
 		repository.deleteById(id);
 	}
-    public Product updateAcademy(Product product) {
-		Product existingProduct = repository.findById(product.getproductId()).orElse(null);
-		existingProduct.setproductName(product.productName());
-		existingProduct.setDescription(product.getDescription());
+    public Product updateProduct(Product product) {
+		System.out.print(product.getproductId());
+		Product existingProduct = repository.findById(product.getId()).orElse(null);
+		existingProduct.setproductId(product.getproductId());
+		existingProduct.setProductName(product.getProductName());
 		existingProduct.setprice(product.getprice());
 		existingProduct.setImageUrl(product.getImageUrl());
 		existingProduct.setquantity(product.getquantity());
 		return repository.save(existingProduct);
-	}
-	
-	public Optional<Product> getAcademyId(int id) {
-		return repository.findById(id);
 	}
 }

@@ -56,7 +56,7 @@ export class AdminsignupComponent implements OnInit {
 }
   addUser(){
     this.user.active=false;
-    this.user.role="user";
+    this.user.role="admin";
     console.log(this.user);
     this.userservice.addUser(this.user).subscribe((data)=>{
       if(data){
@@ -73,7 +73,7 @@ export class AdminsignupComponent implements OnInit {
   }
   pageController(){
     if(this.authState()){
-      this.router.navigate(["/home"]);
+      this.router.navigate(["/addProduct"]);
     }
   }
 }

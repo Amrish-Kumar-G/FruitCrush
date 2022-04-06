@@ -37,7 +37,7 @@
 </div>
 </div>
 <div class="form-group">
-<input type="password" id="confirmpassword" placeholder="Confirm Password" formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }"[(ngModel)]="user.re_password">
+<input type="password" id="confirmpassword" placeholder="Confirm Password" formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }">
 <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback">
   <small *ngIf="f['confirmPassword'].errors['required']">confirmPassword is required</small> 
   <small *ngIf="f['confirmPassword'].errors['matching']">confirmpassword and password must be same</small> 

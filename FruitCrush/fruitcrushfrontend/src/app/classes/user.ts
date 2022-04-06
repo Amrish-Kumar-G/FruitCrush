@@ -3,7 +3,6 @@ export class User {
     userName?:string;
     mobileNo?:string;
     password?:string;
-    re_password?:string;
     role?:string;
     active?:Boolean;
 }

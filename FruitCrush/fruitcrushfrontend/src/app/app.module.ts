@@ -11,6 +11,9 @@ import { LoginComponent } from './components/login/login.component';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { AdminloginComponent } from './components/adminlogin/adminlogin.component';
 import { AdminsignupComponent } from './components/adminsignup/adminsignup.component';
+import { ProductService } from './service/product.service';
+import { CartComponent } from './components/cart/cart.component';
+import { OrderComponent } from './components/order/order.component';
 
 
 @NgModule({
@@ -20,7 +23,9 @@ import { AdminsignupComponent } from './components/adminsignup/adminsignup.compo
     SignupComponent,
     HomepageComponent,
     AdminloginComponent,
-    AdminsignupComponent
+    AdminsignupComponent,
+    CartComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +34,7 @@ import { AdminsignupComponent } from './components/adminsignup/adminsignup.compo
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [UserService],
+  providers: [UserService,ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

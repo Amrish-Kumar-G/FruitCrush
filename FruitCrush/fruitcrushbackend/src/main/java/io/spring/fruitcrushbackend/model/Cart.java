@@ -1,47 +1,35 @@
 package io.spring.fruitcrushbackend.model;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "product")
-public class Product {
+@Table(name = "Cart")
+public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int productId;
     private String productName;
     private int price;
     private int quantity;
-    private String ImageUrl;
+    private String username;
 
-    public int getId() {
-        return this.id;
-    }
+	public String getUsername() {
+		return this.username;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setUsername(String username) {
+		this.username = username;
+	}
 public String getProductName() {
     return productName;
 }
 public void setProductName(String productName) {
     this.productName = productName;
 }
-public int getproductId() {
-    return productId;
-}
-public void setproductId(int productId) {
-    this.productId = productId;
-}
-public String getImageUrl() {
-    return ImageUrl;
-}
-public void setImageUrl(String imageUrl) {
-    ImageUrl = imageUrl;
-}
+
 public int getprice() {
     return price;
 }

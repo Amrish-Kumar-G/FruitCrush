@@ -2,7 +2,6 @@ package io.spring.fruitcrushbackend.controller;
 
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,7 +23,7 @@ import io.spring.fruitcrushbackend.service.ProductService;
 public class ProductController {
     @Autowired
 	private ProductService service;
-    @PostMapping("/admin/addProduct")
+    @PostMapping("admin/addProduct")
 	public Product addAcademy(@RequestBody Product product) {
 		return service.saveProduct(product);
 	}
@@ -34,18 +33,13 @@ public class ProductController {
 		return service.showProduct();
 	}
 	
-	@PutMapping("/admin/updateProduct")
-	public Product updateAcademy(@RequestBody Product product){
-		return service.updateAcademy(product);
+	@PutMapping("admin/updateProduct")
+	public Product updateProduct(@RequestBody Product product){
+		return service.updateProduct(product);
 	}
 	
-	@DeleteMapping("/admin/deleteProduct")
+	@DeleteMapping("admin/deleteProduct")
 	public void deleteAcademy(@RequestParam int id) {
 			service.deleteProduct(id);	
-	}
-	
-	@GetMapping("/admin/getAcademy")
-	public Optional<Product> getAcademyById(@RequestParam int id) {
-		return service.getAcademyId(id);
 	}
 }

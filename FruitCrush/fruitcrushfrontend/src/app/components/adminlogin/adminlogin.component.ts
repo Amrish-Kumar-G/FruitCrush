@@ -67,7 +67,7 @@ export class AdminloginComponent implements OnInit {
   }
   pageController(){
     if(this.authState()){
-      this.router.navigate(["/home"]);
+      this.router.navigate(["/addProduct"]);
     }
   }
 }
