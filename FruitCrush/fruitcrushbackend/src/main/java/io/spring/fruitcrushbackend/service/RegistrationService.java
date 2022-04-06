@@ -27,4 +27,15 @@ public class RegistrationService {
 	public void deleteUser(int id) {
 		repository.deleteById(id);
 	}
+
+    public User updateData(User user) {
+		User existingUser = repository.findById(user.getId()).orElse(null);
+		existingUser.setUserName(user.getUserName());
+		existingUser.setEmailId(user.getEmailId());
+		existingUser.setMobileNo(user.getMobileNo());
+		existingUser.setPassword(user.getPassword());
+		existingUser.setRole(user.getRole());
+		existingUser.setActive(user.getActive());
+		return repository.save(existingUser);
+    }
 }

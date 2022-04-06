@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,39 +32,42 @@ public class RegistrationController {
 		String tempPass = user.getPassword();
 		if(tempEmail != null) {
 			tempUser = service.fetchUserByEmail(tempEmail);
-			if(tempUser.getPassword().equals(tempPass)){
-				return true;
+			if(tempUser!=null){	
+				if((tempUser.getRole()!=null) &&(tempUser.getPassword().equals(tempPass) && tempUser.getRole().equals("user"))){
+					tempUser.setActive(true);
+					setActivestate(tempUser);
+					return true;
+				}
+				return false;
 			}
-		}
-		if(tempUser == null) {
-			throw new Exception("Invalid Login"+tempUser);
-			
 		}
 		return false;
 	}
     @PostMapping("/admin/login")
-	public Boolean loginAdmin(@RequestBody User user) throws Exception {
+	public Boolean loginAdmin(@RequestBody User user){
 		User tempUser = null ;
 		String tempEmail = user.getEmailId();
 		String tempPass = user.getPassword();
 		if(tempEmail != null) {
 			tempUser = service.fetchUserByEmail(tempEmail);
-			if(tempUser.getPassword().equals(tempPass)){
-				return true;
+			if(tempUser!=null){	
+				if((tempUser.getRole()!=null) &&(tempUser.getPassword().equals(tempPass) && tempUser.getRole().equals("admin"))){
+					tempUser.setActive(true);
+					setActivestate(tempUser);
+					return true;
+				}
+				return false;
 			}
-		}
-		if(tempUser == null) {
-			throw new Exception("Invalid Login");
 		}
 		return false;
 	}
     @PostMapping("/signup")
-	public Boolean registeredUser(@RequestBody User user) throws Exception {
+	public Boolean registeredUser(@RequestBody User user) {
 		String tempmail = user.getEmailId();
 		if(tempmail != null && !"".equals(tempmail)) {
 			User userobj = service.fetchUserByEmail(tempmail);
 			if(userobj != null) {
-				throw new Exception("User "+ tempmail +" Already Found, Can't Register");
+				return false;
 			}
 		}
 		User userObj = null;
@@ -89,7 +93,16 @@ public class RegistrationController {
 		}
 		return false;
 	}
-    @DeleteMapping("/admin/deleteStudentByAdmin")
+	@PutMapping
+	public void setActivestate(@RequestBody User user){
+		if(service.updateData(user)!=null){
+			System.out.print("Done");
+		}
+		else{
+			System.out.print("bad");
+		}
+	}
+    @DeleteMapping("/admin/deleteuser")
 	public void deleteStudent(@RequestParam int id) {
 		service.deleteUser(id);
 	}

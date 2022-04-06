@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/classes/user';
 import { UserService } from 'src/app/service/user.service';
 import { AbstractControl, FormBuilder,  FormControl,  FormGroup,  Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-login',
@@ -16,10 +19,11 @@ export class LoginComponent implements OnInit {
     title = 'validation';
   user:User=new User();
   tempuser:User=new User();
-  constructor(private userservice:UserService, private formBuilder: FormBuilder) { }
+  constructor(private userservice:UserService, private formBuilder: FormBuilder,private router: Router) { }
   submitted = false;
 
   ngOnInit(): void {
+    this.pageController();
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: [
@@ -31,6 +35,7 @@ export class LoginComponent implements OnInit {
         ]
       ]
     })
+
   }
   get f(): { [key: string]: AbstractControl } {
     return this.loginForm.controls;
@@ -38,13 +43,32 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     this.submitted = true;
     if (this.loginForm.invalid) {
-      return;
+      console.log("invalid");
     }
-    console.log(JSON.stringify(this.loginForm.value, null, 2));
+    else{
+      console.log("valid");
+      this.authUser();
+    }
 }
   authUser(){
     this.user.active=false;
     console.log(this.userservice.authuser(this.user).subscribe((data)=>{
-      console.log(data)}));
+      if(data){
+        console.log(this.user.emailId);
+        localStorage.setItem("token",String(this.user.emailId));
+        this.pageController();
+      }}));
+  }
+  authState(){
+    if(localStorage.getItem("token")!=null){
+      return true;
+    }else{
+      return false
+    }
+  }
+  pageController(){
+    if(this.authState()){
+      this.router.navigate(["/home"]);
+    }
   }
 }

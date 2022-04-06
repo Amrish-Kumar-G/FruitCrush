@@ -16,7 +16,6 @@ public class User {
 	private String userName;
 	private String mobileNo;
 	private String password;
-	private String re_password;
 	private String role;
     private Boolean active;
 
@@ -50,12 +49,6 @@ public class User {
 	}
 	public void setPassword(String password) {
 		this.password = password;
-	}
-	public String getRe_password() {
-		return re_password;
-	}
-	public void setRe_password(String re_password) {
-		this.re_password = re_password;
 	}
 	public String getRole() {
 		return role;

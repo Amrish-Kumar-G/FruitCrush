@@ -6,21 +6,21 @@
   <div style="display: flex;flex-wrap: wrap;" class="box">
   <div class="group1">
     <div class="form-group">
-<input type="email" id="email" placeholder="Enter email"  formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+<input type="email" id="email" placeholder="Enter email"  formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" [(ngModel)]="user.emailId">
 <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
   <small *ngIf="f['email'].errors['required']">Email is required</small>
   <small *ngIf="f['email'].errors['email']">Email is invalid</small>
 </div>
 </div>
 <div class="form-group">
-<input type="text" required id="username" placeholder="Enter Username"  formControlName="username" [ngClass]="{ 'is-invalid': submitted && f['username'].errors }" pattern="[a-zA-Z ]*">
+<input type="text" required id="username" placeholder="Enter Username"  formControlName="username" [ngClass]="{ 'is-invalid': submitted && f['username'].errors }" pattern="[a-zA-Z ]*" [(ngModel)]="user.userName">
 <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
   <small *ngIf="f['username'].errors['pattern']">username should be alphabets</small>
   <small *ngIf="f['username'].errors['required']">username is required</small>
 </div>
 </div>
 <div class="form-group">
-<input type="tel" required id="mobilenumber"  placeholder="Enter Mobilenumber"  pattern="[6789][0-9]{9}" maxlength="10" formControlName="mobilenumber" [ngClass]="{ 'is-invalid': submitted && f['mobilenumber'].errors }" pattern="[6789][0-9]{9}">
+<input type="tel" required id="mobilenumber"  placeholder="Enter Mobilenumber"  pattern="[6789][0-9]{9}" maxlength="10" formControlName="mobilenumber" [ngClass]="{ 'is-invalid': submitted && f['mobilenumber'].errors }" pattern="[6789][0-9]{9}" [(ngModel)]="user.mobileNo">
 <div *ngIf="submitted && f['mobilenumber'].errors" class="invalid-feedback">
   <small *ngIf="f['mobilenumber'].errors['pattern']">Enter the Valid mobilenumber</small>
   <small *ngIf="f['mobilenumber'].errors['required']">mobilenumber is required</small>
@@ -28,7 +28,7 @@
 </div>
 </div>
 <div class="form-group"> 
-<input type="password" id="password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+<input type="password" id="password"  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" [(ngModel)]="user.password">
 <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
   <small *ngIf="f['password'].errors['pattern']">password does not match the requirement</small>
   <small *ngIf="f['password'].errors['required']">Password is required</small>
@@ -37,7 +37,7 @@
 </div>
 </div>
 <div class="form-group">
-<input type="password" id="confirmpassword" placeholder="Confirm Password" formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }">
+<input type="password" id="confirmpassword" placeholder="Confirm Password" formControlName="confirmPassword" [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }"[(ngModel)]="user.re_password">
 <div *ngIf="submitted && f['confirmPassword'].errors" class="invalid-feedback">
   <small *ngIf="f['confirmPassword'].errors['required']">confirmPassword is required</small> 
   <small *ngIf="f['confirmPassword'].errors['matching']">confirmpassword and password must be same</small> 

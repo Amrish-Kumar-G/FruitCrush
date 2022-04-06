@@ -3,6 +3,9 @@ import { User } from 'src/app/classes/user';
 import { UserService } from 'src/app/service/user.service';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ConfirmValidation } from 'src/app/confirm-validation';
+import { Router } from '@angular/router';
+
+
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -16,8 +19,10 @@ export class SignupComponent implements OnInit {
     })
     title = 'validation';
     submitted = false;
-  constructor(private userservice:UserService,private formBuilder: FormBuilder) { }
+  constructor(private userservice:UserService,private formBuilder: FormBuilder,private router: Router) { }
   ngOnInit(): void {
+    this.pageController();
+    console.log(localStorage.getItem("token"));
     this.registerForm =this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: [
@@ -45,11 +50,29 @@ export class SignupComponent implements OnInit {
     }
     else{
       console.log("valid");
+      this.addUser();
     }
 }
   addUser(){
     this.user.active=false;
+    this.user.role="user";
     console.log(this.user);
-    this.userservice.addUser(this.user).subscribe();
+    this.userservice.addUser(this.user).subscribe((data)=>{
+      if(data){
+        this.pageController();
+      }
+    });
+  }
+  authState(){
+    if(localStorage.getItem("token")!=null){
+      return true;
+    }else{
+      return false
+    }
+  }
+  pageController(){
+    if(this.authState()){
+      this.router.navigate(["/home"]);
+    }
   }
 }
