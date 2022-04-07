@@ -133,6 +133,7 @@ public class RegistrationController {
 	@PostMapping("/type")
 	public String typeofUser(@RequestBody String email){
 		User tempUser = service.fetchUserByEmail(email);
-		return tempUser.getRole();
+		String role=tempUser.getRole();
+		return role;
 	}
 }

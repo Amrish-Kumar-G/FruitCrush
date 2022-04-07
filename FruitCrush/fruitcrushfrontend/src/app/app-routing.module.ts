@@ -12,6 +12,7 @@ import { ViewusersComponent } from './components/viewusers/viewusers.component';
 import { AddproductComponent } from './components/addproduct/addproduct.component';
 import { ViewordersComponent } from './components/vieworders/vieworders.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { EditproductComponent } from './components/editproduct/editproduct.component';
 
 const routes: Routes = [
   {path:'',component:LoginComponent},
@@ -22,9 +23,10 @@ const routes: Routes = [
   {path:'orders',component:OrderComponent},
   {path:'cart',component:CartComponent},
   {path:'admin/users',component:ViewusersComponent},
-  {path:'addProduct',component:AddproductComponent},
+  {path:'admin/addProduct',component:AddproductComponent},
   {path:'admin/orders',component:ViewordersComponent},
-  {path:'editUser/:id',component:EditUserComponent}
+  {path:'editUser/:id',component:EditUserComponent},
+  {path:'editProduct/:id',component:EditproductComponent}
 
 ];
 

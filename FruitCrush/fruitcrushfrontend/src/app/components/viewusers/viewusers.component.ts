@@ -64,7 +64,7 @@ export class ViewusersComponent implements OnInit {
    roleCheck(){
     if(this.authState()){
     this.userservice.typeofUser(this.username).subscribe((data)=>{
-      if(data=="user"){
+      if(data.toString()=="user"){
         this.router.navigate(['home']);
       }
     })

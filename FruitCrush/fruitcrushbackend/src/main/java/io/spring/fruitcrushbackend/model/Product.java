@@ -11,7 +11,6 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int productId;
     private String productName;
     private int price;
     private int quantity;
@@ -30,12 +29,7 @@ public String getProductName() {
 public void setProductName(String productName) {
     this.productName = productName;
 }
-public int getproductId() {
-    return productId;
-}
-public void setproductId(int productId) {
-    this.productId = productId;
-}
+
 public String getImageUrl() {
     return ImageUrl;
 }

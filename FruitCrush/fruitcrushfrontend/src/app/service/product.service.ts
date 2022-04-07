@@ -35,4 +35,13 @@ export class ProductService {
   allOrder(){
     return this.http.get(`${this.url+"/admin/orders"}`);
   }
+  addProduct(product:Product):Observable<Boolean>{
+    return this.http.post<Boolean>(`${this.url+"/admin/addProduct"}`,product);
+  }
+  deleteProduct(id:Number):Observable<Boolean>{
+    return this.http.post<Boolean>(`${this.url+"/admin/deleteProduct"}`,id);
+  }
+  updateProduct(product:Product):Observable<object>{
+    return this.http.post<Object>(`${this.url+"/admin/updateProduct"}`,product);
+  }
 }

@@ -33,7 +33,7 @@ export class UserService {
   deleteElement(emailId?:String):Observable<object>{
     return this.http.post<Object>(`${this.url+"/admin/deleteUser"}`,emailId);
   }
-  typeofUser(emailId?:String):Observable<String>{
-    return this.http.post<String>(`${this.url+"/type"}`,emailId);
+  typeofUser(emailId?:String):Observable<any>{
+    return this.http.post(`${this.url+"/type"}`,emailId,{responseType: 'text' });
   }
 }

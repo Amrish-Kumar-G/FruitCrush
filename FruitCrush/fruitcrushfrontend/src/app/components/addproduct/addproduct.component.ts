@@ -17,6 +17,8 @@ export class AddproductComponent implements OnInit {
   constructor(private productservice:ProductService,private router:Router,private userservice:UserService) { }
 
   ngOnInit(): void {
+    this.username=String(localStorage.getItem("token"));
+    this.roleCheck();
     this.fetchdata();
   }
   fetchdata(){
@@ -56,4 +58,23 @@ export class AddproductComponent implements OnInit {
     this.router.navigate(['admin/login']);
   }
 }
+addProduct(){
+  this.productservice.addProduct(this.product).subscribe((data)=>{
+    if(data){
+      this.reloadCurrentPage();
+    }else{
+      console.log("cannot add product");
+    }
+  })
+}
+reloadCurrentPage() {
+  window.location.reload();
+ }
+ deleteElement(data:any){
+   this.productservice.deleteProduct(data).subscribe((data)=>{
+     if(data){
+       this.reloadCurrentPage();
+     }
+   })
+ }
 }

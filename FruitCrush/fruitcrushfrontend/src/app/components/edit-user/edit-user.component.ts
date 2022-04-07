@@ -79,7 +79,7 @@ export class EditUserComponent implements OnInit {
   }
   roleCheck(){
     if(this.authState()){
-    this.userservice.typeofUser(this.username).subscribe((data)=>{
+    this.userservice.typeofUser(this.username).subscribe((data:String)=>{
       if(data=="user"){
         this.router.navigate(['home']);
       }

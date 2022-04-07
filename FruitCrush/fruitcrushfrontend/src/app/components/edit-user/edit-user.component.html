@@ -6,12 +6,12 @@
   <div style="display: flex;flex-wrap: wrap;" class="box">
   <div class="group1">
     <div class="form-group">
-      <select name="role" id="role" placeholder="role">
+      <select name="role" id="role" placeholder="role"  [(ngModel)]="user.role">
         <option value="user">User</option>
       <option value="admin">Admin</option>
     </select>
-    </div>
-    <div class="form-group">
+    <br>
+    <br>
 <input type="email" id="email" placeholder="Enter email"  formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" [(ngModel)]="user.emailId">
 <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
   <small *ngIf="f['email'].errors['required']">Email is required</small>

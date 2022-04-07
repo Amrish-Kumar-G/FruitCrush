@@ -5,12 +5,9 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.spring.fruitcrushbackend.model.Product;
@@ -18,13 +15,13 @@ import io.spring.fruitcrushbackend.service.ProductService;
 
 
 
-@CrossOrigin(origins = "http://localhost:4200")
 @RestController
+@CrossOrigin()
 public class ProductController {
     @Autowired
 	private ProductService service;
     @PostMapping("admin/addProduct")
-	public Product addAcademy(@RequestBody Product product) {
+	public Product addProduct(@RequestBody Product product) {
 		return service.saveProduct(product);
 	}
 	
@@ -33,13 +30,14 @@ public class ProductController {
 		return service.showProduct();
 	}
 	
-	@PutMapping("admin/updateProduct")
+	@PostMapping("/admin/updateProduct")
 	public Product updateProduct(@RequestBody Product product){
 		return service.updateProduct(product);
 	}
 	
-	@DeleteMapping("admin/deleteProduct")
-	public void deleteAcademy(@RequestParam int id) {
-			service.deleteProduct(id);	
+    @PostMapping("/admin/deleteProduct")
+	public Boolean deleteProduct(@RequestBody Integer id) { 
+		service.deleteProduct(id);
+		return true;
 	}
 }

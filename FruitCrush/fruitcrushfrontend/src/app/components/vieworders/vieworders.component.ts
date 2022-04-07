@@ -45,7 +45,7 @@ export class ViewordersComponent implements OnInit {
   roleCheck(){
     if(this.authState()){
     this.userservice.typeofUser(this.username).subscribe((data)=>{
-      if(data=="user"){
+      if(String(data)=="user"){
         this.router.navigate(['home']);
       }
     })
