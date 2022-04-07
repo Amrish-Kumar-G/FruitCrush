@@ -2,6 +2,8 @@ package io.spring.fruitcrushbackend.service;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,4 +40,7 @@ public class RegistrationService {
 		existingUser.setActive(user.getActive());
 		return repository.save(existingUser);
     }
+	public List<User> allUser(){
+		return repository.findAll();
+	}
 }

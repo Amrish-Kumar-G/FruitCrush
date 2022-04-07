@@ -14,6 +14,12 @@ import { AdminsignupComponent } from './components/adminsignup/adminsignup.compo
 import { ProductService } from './service/product.service';
 import { CartComponent } from './components/cart/cart.component';
 import { OrderComponent } from './components/order/order.component';
+import { AddproductComponent } from './components/addproduct/addproduct.component';
+import { ViewordersComponent } from './components/vieworders/vieworders.component';
+import { ViewusersComponent } from './components/viewusers/viewusers.component';
+import { EditproductComponent } from './components/editproduct/editproduct.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -25,14 +31,21 @@ import { OrderComponent } from './components/order/order.component';
     AdminloginComponent,
     AdminsignupComponent,
     CartComponent,
-    OrderComponent
+    OrderComponent,
+    AddproductComponent,
+    ViewordersComponent,
+    ViewusersComponent,
+    AddproductComponent,
+    EditproductComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   providers: [UserService,ProductService],
   bootstrap: [AppComponent]

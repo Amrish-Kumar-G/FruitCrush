@@ -1,28 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/classes/user';
-import { UserService } from 'src/app/service/user.service';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Edituser } from 'src/app/classes/edituser';
+import { User } from 'src/app/classes/user';
 import { ConfirmValidation } from 'src/app/confirm-validation';
-import { Router } from '@angular/router';
-
+import { UserService } from 'src/app/service/user.service';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: 'app-edit-user',
+  templateUrl: './edit-user.component.html',
+  styleUrls: ['./edit-user.component.css']
 })
-export class SignupComponent implements OnInit {
-  user:User=new User();
+export class EditUserComponent implements OnInit {
+  user:Edituser=new User();
+  username?:String;
   registerForm: FormGroup =new FormGroup({
     email:new FormControl(''),
     password:new FormControl('')
     })
     title = 'validation';
     submitted = false;
-  constructor(private userservice:UserService,private formBuilder: FormBuilder,private router: Router) { }
+  constructor(private userservice:UserService,private formBuilder: FormBuilder,private router: Router,private _Activatedroute:ActivatedRoute) { }
+
   ngOnInit(): void {
-    this.pageController();
-    console.log(localStorage.getItem("token"));
+    this.username=String(localStorage.getItem("token"));
+    this.roleCheck();
     this.registerForm =this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: [
@@ -50,19 +52,23 @@ export class SignupComponent implements OnInit {
     }
     else{
       console.log("valid");
-      this.addUser();
+      this.updateUser();
     }
 }
-  addUser(){
+  updateUser(){
     this.user.active=false;
-    this.user.role="user";
+    this._Activatedroute.paramMap.subscribe(params => { 
+      this.user.id = Number(params.get('id'));
+  });
     console.log(this.user);
-    this.userservice.addUser(this.user).subscribe((data)=>{
+    this.userservice.updateUser(this.user).subscribe((data)=>{
       if(data){
-        localStorage.setItem("token",String(this.user.emailId));
-        this.pageController();
+       this.pageController();
       }
     });
+  }
+  pageController(){
+    this.router.navigate(['admin/users'])
   }
   authState(){
     if(localStorage.getItem("token")!=null){
@@ -71,9 +77,15 @@ export class SignupComponent implements OnInit {
       return false
     }
   }
-  pageController(){
+  roleCheck(){
     if(this.authState()){
-      this.router.navigate(["/home"]);
-    }
+    this.userservice.typeofUser(this.username).subscribe((data)=>{
+      if(data=="user"){
+        this.router.navigate(['home']);
+      }
+    })
+  }else{
+    this.router.navigate(['admin/login']);
   }
+}
 }

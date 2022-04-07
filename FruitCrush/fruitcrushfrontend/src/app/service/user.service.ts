@@ -14,4 +14,19 @@ export class UserService {
   authuser(users?:User):Observable<Boolean>{
     return this.http.post<Boolean>(`${this.url}`,users);
   }
+  logout(user?:String):Observable<Boolean>{
+    return this.http.post<Boolean>(`${this.url+"/logout"}`,user);
+  }
+  findall(){
+    return this.http.get(`${this.url+"/admin/users"}`);
+  }
+  updateUser(users?:User):Observable<object>{
+    return this.http.post<Object>(`${this.url+"/admin/editUser"}`,users);
+  }
+  deleteElement(emailId?:String):Observable<object>{
+    return this.http.post<Object>(`${this.url+"/admin/deleteUser"}`,emailId);
+  }
+  typeofUser(emailId?:String):Observable<String>{
+    return this.http.post<String>(`${this.url+"/type"}`,emailId);
+  }
 }

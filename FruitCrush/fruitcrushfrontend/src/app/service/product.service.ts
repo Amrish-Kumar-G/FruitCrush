@@ -32,4 +32,7 @@ export class ProductService {
   deleteCart(username:String):Observable<Boolean>{
     return this.http.post<Boolean>(`${this.url+"/delete"}`,username);;
   }
+  allOrder(){
+    return this.http.get(`${this.url+"/admin/orders"}`);
+  }
 }

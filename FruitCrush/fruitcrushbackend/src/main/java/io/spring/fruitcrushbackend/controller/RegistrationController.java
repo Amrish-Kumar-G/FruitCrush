@@ -3,15 +3,15 @@ package io.spring.fruitcrushbackend.controller;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.spring.fruitcrushbackend.model.User;
@@ -102,8 +102,37 @@ public class RegistrationController {
 			System.out.print("bad");
 		}
 	}
-    @DeleteMapping("/admin/deleteuser")
-	public void deleteStudent(@RequestParam int id) {
-		service.deleteUser(id);
+	@PostMapping("/logout")
+	public Boolean logout(@RequestBody String userName){
+		User tmpUser=null;
+		tmpUser = service.fetchUserByEmail(userName);
+		if(tmpUser!=null){
+			tmpUser.setActive(false);
+			setActivestate(tmpUser);
+			return true;
+		}
+		return false;
+	}
+	@GetMapping("/admin/users")
+	public List<User> listUser(){
+		return service.allUser();
+	}
+	@PostMapping("/admin/editUser")
+	public Boolean editUser(@RequestBody User user){
+		if(service.updateData(user)!=null){
+			return true;
+		}
+		return false;
+	}
+    @PostMapping("/admin/deleteUser")
+	public Boolean deleteUser(@RequestBody String email) { 
+		User tempUser = service.fetchUserByEmail(email);
+		service.deleteUser(tempUser.getId());
+		return true;
+	}
+	@PostMapping("/type")
+	public String typeofUser(@RequestBody String email){
+		User tempUser = service.fetchUserByEmail(email);
+		return tempUser.getRole();
 	}
 }

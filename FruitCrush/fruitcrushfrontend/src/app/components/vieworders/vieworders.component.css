@@ -1,6 +1,5 @@
 body{
-    background-color: rgb(135, 134, 190);
-    color: aliceblue;
+    background-color:gray ;
 }
 .headcomp{
     background-color: rgb(9, 13, 71);
@@ -14,16 +13,10 @@ body{
 .logout{
     margin-left: auto;
     padding-right: 15px;
-}
-.brand{
-    font-size: 26px;
-}
-.pages{
-    margin-left: 5%;
+    color: white;
     font-size: 18px;
-}
-.selected{
-    font-size: 22px;
+    font-family: arial, sans-serif;
+    cursor: pointer;
 }
 .logout button{
     background: none;
@@ -34,45 +27,73 @@ body{
 	cursor: pointer;
 	outline: inherit;
 }
+.brand{
+    font-size: 26px;
+    color: white;
+    font-family: arial, sans-serif;
+}
 a{
     text-decoration: none;
     color: aliceblue;
+}
+.pages{
+    margin-left: 5%;
+    font-size: 18px;
+    color: white;
+    font-family: arial, sans-serif;
+    cursor: pointer;
+}
+.selected{
+    font-size: 26px;
+    font-family: arial, sans-serif;
+    cursor: pointer;
 }
 .pages a:hover{
 font-size: 24px;
 }
 table {
     font-family: arial, sans-serif;
-    width: 50%;
+    width: 90%;
     align-items: center;
     padding: auto;
     border-collapse: collapse;
-    border-radius: 1em;
     overflow: hidden;
+    border-radius: 1em;
     margin-left:auto;
     margin-right:auto;
     margin-top: 7%;
   }
   th{
-      background-color: blue;
+      background-color: rgb(9, 13, 71);
   }
   td{
-      background-color: grey;
+      background-color: rgb(54, 103, 148);
   }
   td, th {
     border: none;
-    text-align: left;
+    text-align: center;
     padding: 20px;
     color: white;
   }
-  .pay{
-      width: 6%;
+  .placeOrder{
+      width: 10%;
       text-align: center;
       padding: 10px;
       margin-top: 2%;
+      font-family: arial, sans-serif !important;
+      font-size: large;
+      font-weight: bold;
     float: right;
     margin-right: 25%;
     border-radius: 25%;
     color: black;
+    cursor: pointer;
     background: linear-gradient(to bottom,rgb(132, 156, 221) 70%,rgb(169, 168, 218));
+  }
+  .special{
+    border-right:hidden;
+  }
+  .tablespecial{
+    border-collapse:separate;
+    border-spacing:0 35px;
   }

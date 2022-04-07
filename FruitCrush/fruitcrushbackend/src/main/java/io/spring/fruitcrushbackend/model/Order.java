@@ -20,7 +20,9 @@ public class Order {
 	public String getProductName() {
 		return this.productName;
 	}
-
+	public Object getId() {
+		return this.id;
+	}
 	public void setProductName(String productName) {
 		this.productName = productName;
 	}

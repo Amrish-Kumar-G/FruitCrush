@@ -8,6 +8,10 @@ import { AdminsignupComponent } from './components/adminsignup/adminsignup.compo
 import { AdminloginComponent } from './components/adminlogin/adminlogin.component';
 import { OrderComponent } from './components/order/order.component';
 import { CartComponent } from './components/cart/cart.component';
+import { ViewusersComponent } from './components/viewusers/viewusers.component';
+import { AddproductComponent } from './components/addproduct/addproduct.component';
+import { ViewordersComponent } from './components/vieworders/vieworders.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 const routes: Routes = [
   {path:'',component:LoginComponent},
@@ -16,7 +20,11 @@ const routes: Routes = [
   {path:'admin/signup',component:AdminsignupComponent},
   {path:'admin/login',component:AdminloginComponent},
   {path:'orders',component:OrderComponent},
-  {path:'cart',component:CartComponent}
+  {path:'cart',component:CartComponent},
+  {path:'admin/users',component:ViewusersComponent},
+  {path:'addProduct',component:AddproductComponent},
+  {path:'admin/orders',component:ViewordersComponent},
+  {path:'editUser/:id',component:EditUserComponent}
 
 ];
 

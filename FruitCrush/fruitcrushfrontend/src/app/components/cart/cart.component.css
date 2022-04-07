@@ -18,6 +18,15 @@ body{
     font-family: arial, sans-serif;
     cursor: pointer;
 }
+.logout button{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
 .brand{
     font-size: 26px;
     color: white;
