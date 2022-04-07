@@ -51,7 +51,7 @@ export class AdminloginComponent implements OnInit {
 }
   authUser(){
     this.user.active=false;
-    console.log(this.userservice.authuser(this.user).subscribe((data)=>{
+    console.log(this.userservice.authadminuser(this.user).subscribe((data)=>{
       if(data){
         console.log(this.user.emailId);
         localStorage.setItem("token",String(this.user.emailId));

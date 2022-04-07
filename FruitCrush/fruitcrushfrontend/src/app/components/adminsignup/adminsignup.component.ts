@@ -58,7 +58,7 @@ export class AdminsignupComponent implements OnInit {
     this.user.active=false;
     this.user.role="admin";
     console.log(this.user);
-    this.userservice.addUser(this.user).subscribe((data)=>{
+    this.userservice.addadminUser(this.user).subscribe((data)=>{
       if(data){
         this.pageController();
       }

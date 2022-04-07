@@ -11,8 +11,15 @@ export class UserService {
   addUser(users?:User):Observable<object>{
     return this.http.post<Object>(`${this.url+"/signup"}`,users);
   }
+  addadminUser(users?:User):Observable<object>{
+    return this.http.post<Object>(`${this.url+"/admin/signup"}`,users);
+  }
   authuser(users?:User):Observable<Boolean>{
     return this.http.post<Boolean>(`${this.url}`,users);
+  }
+  authadminuser(users?:User):Observable<Boolean>{
+    console.log(`${this.url}`)
+    return this.http.post<Boolean>(`${this.url+"/admin/login"}`,users);
   }
   logout(user?:String):Observable<Boolean>{
     return this.http.post<Boolean>(`${this.url+"/logout"}`,user);
