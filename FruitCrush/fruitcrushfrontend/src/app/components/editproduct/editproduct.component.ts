@@ -30,7 +30,7 @@ export class EditproductComponent implements OnInit {
     });
   }
   pageController(){
-    this.router.navigate(['admin/addProduct'])
+    this.router.navigate(['addProduct'])
   }
   authState(){
     if(localStorage.getItem("token")!=null){
